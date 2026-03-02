@@ -1,0 +1,22 @@
+name: Validacao de Regras de Negocio
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Executar testes unitarios
+        run: python -m unittest test_conta.py
